@@ -10,16 +10,16 @@ body {
     background-color: #f8fbff;
 }
 
-.input-section {
+.input-section form{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 40px;
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
 }
 
-.input-section input {
+.input-section #input-link {
     padding: 15px;
     font-size: 18px;
     width: 100%;
@@ -30,7 +30,21 @@ body {
     text-align: center;
 }
 
-.input-section button {
+@media (max-width: 450px) {
+  .input-section {
+    max-width: 90%; 
+  }
+
+  .input-section #input-link {
+    width: 100%; 
+    font-size: 16px; 
+  }
+  .content-section{
+    max-width: 90%; 
+  }
+}
+
+.input-section .btn {
     padding: 15px 30px;
     font-size: 18px;
     cursor: pointer;
@@ -38,9 +52,10 @@ body {
     color: white;
     border: none;
     border-radius: 8px;
+    margin: 0 auto;
 }
 
-.input-section button:hover {
+.input-section .btn:hover {
     background-color: #8a7f93;
 }
 
@@ -73,4 +88,12 @@ body {
     font-size: 18px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #333;
+  font-size: 14px;
+  margin-top: 40px;
 }

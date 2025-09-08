@@ -1,0 +1,21 @@
+<%- include("partials/header.ejs") %>
+
+<body>
+    <div class="input-section">
+        <form action="/submit" method="POST">
+            <input id="input-link" type="text" name="link" placeholder="ex. https://www.google.com/">
+            <button type="submit" class="btn">Generate</button>
+        </form>
+
+    </div>
+
+    <div class="content-section">
+        <img class="code-image" src="/assets/google.png" alt="QR code">
+        <div class="links">
+            <p>Links:</p>
+        </div>
+    </div>
+    <footer>  &copy; 2025 Natalia Polak</footer>
+</body>
+
+</html>

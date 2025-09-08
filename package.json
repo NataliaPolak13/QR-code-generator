@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
     "qr-image": "^3.2.0"
   },
   "name": "qr-generator",
@@ -7,7 +9,6 @@
   "description": "QR generator",
   "main": "index.js",
   "type": "module",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

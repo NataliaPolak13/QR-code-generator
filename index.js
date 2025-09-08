@@ -1,13 +1,30 @@
-import qr from 'qr-image'
+import express from "express";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import bodyParser from "body-parser"
 
-$(".btn").click(function () {
-    var enteredLink = $('#input-link').val();
-    codeGenerator(enteredLink);
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+
+const app = express();
+const port = 3000;
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static("public"));
+
+
+app.get("/", (req, res) => {
+    res.render("index.ejs");
 });
 
-function codeGenerator(enteredLink) {
-    fileName = enteredLink.replace(/^https?:\/\//, "");
-    var qrImg = qr.image(fileName);
-    qrImg.pipe(createWriteStream(`/qr_codes/${fileName}.png`));
-    $(".code-image").attr('src', `/qr_codes/${fileName}.png`);
-}
+// app.post("/submit", (req, res) => {
+
+//     console.log(req.body.link);
+
+// });
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`);
+});
+
