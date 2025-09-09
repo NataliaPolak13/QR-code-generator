@@ -18,7 +18,10 @@ app.use(express.static("public"));
 
 
 app.get("/", (req, res) => {
-    res.render("index.ejs");
+
+    const loadedList = JSON.parse(fs.readFileSync("./data/links.json"));
+    res.render("index.ejs", { loadedList: loadedList });
+
 });
 
 function qrCodeGenerator(link) {
@@ -32,10 +35,17 @@ app.post("/submit", (req, res) => {
 
     const link = req.body.link;
 
+    const loadedList = JSON.parse(fs.readFileSync("./data/links.json"));
+
+    loadedList.push(link);
+
+    fs.writeFileSync("./data/links.json", JSON.stringify(loadedList, null, 2));
+  
     qrCodeGenerator(link);
 
     res.render("index.ejs", {
-        link: link
+        link: link,
+        loadedList: loadedList
 
     });
 });

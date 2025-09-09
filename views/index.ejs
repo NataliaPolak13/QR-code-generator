@@ -16,7 +16,12 @@
         <img class="code-image" src="/assets/google.png" alt="QR code">
         <% } %>
     <div class="links">
-        <p>Links:</p>
+        <p>Last links:</p>
+        <ul>
+            <% loadedList.forEach(element => {%>
+                <li><%= element %> </li>
+            <% });   %>
+        </ul>
     </div>
     </div>
     <footer>  &copy; 2025 Natalia Polak</footer>
