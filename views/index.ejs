@@ -10,10 +10,14 @@
     </div>
 
     <div class="content-section">
+        <% if (locals.link) { %>
+        <img class="code-image" src="/assets/qr.png" alt="QR code">
+        <% } else { %>
         <img class="code-image" src="/assets/google.png" alt="QR code">
-        <div class="links">
-            <p>Links:</p>
-        </div>
+        <% } %>
+    <div class="links">
+        <p>Links:</p>
+    </div>
     </div>
     <footer>  &copy; 2025 Natalia Polak</footer>
 </body>

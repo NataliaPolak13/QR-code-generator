@@ -2,6 +2,9 @@ import express from "express";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser"
+import qr from "qr-image"
+import fs from "fs";
+
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -18,11 +21,24 @@ app.get("/", (req, res) => {
     res.render("index.ejs");
 });
 
-// app.post("/submit", (req, res) => {
+function qrCodeGenerator(link) {
 
-//     console.log(req.body.link);
+    const qrCode = qr.image(link, {type: "png"});
+    const filePath = new URL("./public/assets/qr.png", import.meta.url);
+    qrCode.pipe(fs.createWriteStream(filePath));
+}
 
-// });
+app.post("/submit", (req, res) => {
+
+    const link = req.body.link;
+
+    qrCodeGenerator(link);
+
+    res.render("index.ejs", {
+        link: link
+
+    });
+});
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
