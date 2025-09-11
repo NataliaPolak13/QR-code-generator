@@ -1,30 +1,43 @@
 <%- include("partials/header.ejs") %>
 
-<body>
-    <div class="input-section">
-        <form action="/submit" method="POST">
-            <input id="input-link" type="text" name="link" placeholder="ex. https://www.google.com/">
-            <button type="submit" class="btn">Generate</button>
-        </form>
+    <body>
+        <% if (locals.link) {%>
+            <h1>Your QR code for the <%= link %>: </h1>
+            <% } else if (locals.error){ %>
+                <h1>
+                    <%= error %>
+                </h1>
+                <% } else { %>
+                    <h1>Welcome to the code generator. Enter the URL below: </h1>
+                    <% } %>
 
-    </div>
+                        <div class="input-section">
+                            <form action="/submit" method="POST">
+                                <input id="input-link" type="text" name="link"
+                                    placeholder="ex. https://www.google.com/">
+                                <button type="submit" class="btn">Generate</button>
+                            </form>
 
-    <div class="content-section">
-        <% if (locals.link) { %>
-        <img class="code-image" src="/assets/qr.png" alt="QR code">
-        <% } else { %>
-        <img class="code-image" src="/assets/google.png" alt="QR code">
-        <% } %>
-    <div class="links">
-        <p>Last links:</p>
-        <ul>
-            <% loadedList.forEach(element => {%>
-                <li><%= element %> </li>
-            <% });   %>
-        </ul>
-    </div>
-    </div>
-    <footer>  &copy; 2025 Natalia Polak</footer>
-</body>
+                        </div>
 
-</html>
+                        <div class="content-section">
+                            <% if (locals.link) { %>
+                                <img class="code-image" src="/assets/qr.png" alt="QR code">
+                                <% } else { %>
+                                    <img class="code-image" src="/assets/google.png" alt="QR code">
+                                    <% } %>
+                                        <div class="links">
+                                            <p>Last links:</p>
+                                            <ul>
+                                                <% loadedList.forEach(element=> {%>
+                                                    <li>
+                                                        <%= element %>
+                                                    </li>
+                                                    <% }); %>
+                                            </ul>
+                                        </div>
+                        </div>
+                        <footer> &copy; 2025 Natalia Polak</footer>
+    </body>
+
+    </html>
