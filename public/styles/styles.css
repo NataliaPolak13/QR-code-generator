@@ -76,14 +76,14 @@ h1{
 }
 
 .content-section img {
-    max-width: 250px;
+    width: 175px;
     border: 2px solid #ccc;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .links {
-    width: 250px;
+    width: 300px;
     height: 250px;
     border: 2px solid #333;
     border-radius: 10px;

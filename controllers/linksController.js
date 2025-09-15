@@ -38,16 +38,20 @@ export const submitLink = (req, res) => {
         const loadedList = JSON.parse(fs.readFileSync("./data/links.json"));
         if (loadedList.length >= 8)
             loadedList.shift();
-        loadedList.push(link);
-        fs.writeFileSync("./data/links.json", JSON.stringify(loadedList, null, 2));
 
-        qrCodeGenerator(link);
+        if (!(loadedList.includes(link))){
+            loadedList.push(link);
+            fs.writeFileSync("./data/links.json", JSON.stringify(loadedList, null, 2));
+            };
+        
+            qrCodeGenerator(link);
 
-        res.render("index.ejs", {
-            link: link,
-            loadedList: loadedList,
-        });
-    }
+            res.render("index.ejs", {
+                link: link,
+                loadedList: loadedList,
+            });
+        }
+
 
 
 };
