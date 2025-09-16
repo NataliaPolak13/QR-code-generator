@@ -26,15 +26,17 @@
                                 <% } else { %>
                                     <img class="code-image" src="/assets/myGit.png" alt="QR code">
                                     <% } %>
-                                        <div class="links">
+                                        <div class="links-box">
                                             <p>Last links:</p>
-                                            <ul>
-                                                <% loadedList.forEach(element=> {%>
-                                                    <li>
-                                                        <%= element %>
-                                                    </li>
-                                                    <% }); %>
-                                            </ul>
+                                            <div class="links">
+                                                <ul>
+                                                    <% loadedList.forEach(element=> {%>
+                                                        <li>
+                                                            <%= element %>
+                                                        </li>
+                                                        <% }); %>
+                                                </ul>
+                                            </div>
                                         </div>
                         </div>
                         <footer> &copy; 2025 Natalia Polak</footer>
